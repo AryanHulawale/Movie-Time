@@ -9,8 +9,6 @@ import { connectDb } from "./config/db.js";
 
 dotenv.config();
 
-await connectDb();
-
 const app = express();
 
 app.use(express.json());
@@ -30,7 +28,12 @@ app.use("/api/movies", movieRouter);
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Backend is running" });
+  res.status(200).json({ message: "Backend running" });
+});
+
+/* CONNECT DB SAFELY */
+connectDb().catch(err => {
+  console.error("MongoDB connection failed:", err);
 });
 
 export default app;
