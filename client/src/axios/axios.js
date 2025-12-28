@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://movie-time-backend.vercel.app/api",
+  baseURL: "https://movie-time-v9i7.vercel.app/api",
   timeout: 5000,
 });
 
